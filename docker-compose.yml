@@ -2,19 +2,19 @@
 services:
 
   hub:
-    image: selenium/hub:3.141.59
+    image: selenium/hub:4.0.0
     ports:
       - 4444:4444
 
   chrome:
-    image: selenium/node-chrome:3.141.59
+    image: selenium/node-chrome:89.0
     depends_on:
       - hub
     environment:
       - HUB_HOST=hub
 
   firefox:
-    image: selenium/node-firefox:3.141.59
+    image: selenium/node-firefox:87.0
     depends_on:
       - hub
     environment:
