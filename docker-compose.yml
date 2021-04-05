@@ -3,25 +3,19 @@ services:
   chrome: 
     depends_on: 
       - hub
+    volumes:
+      - /dev/urandom:/dev/random
+    shm_size: 2G
     environment: 
       HUB_PORT_4444_TCP_ADDR: hub
       HUB_PORT_4444_TCP_PORT: 4444
-      NODE_MAX_INSTANCES: 4
-      NODE_MAX_SESSION: 4
+      NODE_MAX_INSTANCES: 1
+      NODE_MAX_SESSION: 1
     image: "selenium/node-chrome:3.141.59"
-  firefox: 
-    depends_on: 
-      - hub
-    environment: 
-      HUB_PORT_4444_TCP_ADDR: hub
-      HUB_PORT_4444_TCP_PORT: 4444
-      NODE_MAX_INSTANCES: 4
-      NODE_MAX_SESSION: 4
-    image: "selenium/node-firefox:3.141.59"
-  hub: 
+  hub:
     environment: 
       GRID_BROWSER_TIMEOUT: 3000
-      GRID_MAX_SESSION: 16
+      GRID_MAX_SESSION: 1
       GRID_TIMEOUT: 3000
     image: "selenium/hub:3.141.59"
     ports: 
