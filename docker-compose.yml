@@ -20,4 +20,3 @@ services:
     image: "selenium/hub:3.141.59"
     ports: 
       - "4444:4444"
-version: "3.8"
